@@ -6,7 +6,35 @@
 */
 
 function calculateTotalSpentByCategory(transactions) {
-  return [];
-}
+  // Take in initial items and add timestamp to it
+  const timestamp = new Date().toLocaleString();
+  let shoppingListArray = {};
 
+  transactions.forEach((item) => {
+    const {itemName, category, price} = item;
+    // Check if category exists in object
+    if (shoppingListArray[category]) {
+      shoppingListArray[category] += price;
+    } else {
+      shoppingListArray[category] = price;
+    }
+  });
+  // console.log(shoppingListArray);
+  const shoppingListArrayKeys = Object.keys(shoppingListArray).map(category => {
+    return {category: category, totalSpent: shoppingListArray[category]}
+  });
+   console.log(shoppingListArrayKeys);
+  return shoppingListArrayKeys;
+}
+const transactions = [
+  {
+    id: 1,
+    timestamp: 1656076800000,
+    price: 10,
+    category: 'Food',
+    itemName: 'Pizza',
+  },
+];
+// const totalSpentByCategory = calculateTotalSpentByCategory(transactions);
+calculateTotalSpentByCategory(transactions)
 module.exports = calculateTotalSpentByCategory;
