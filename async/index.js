@@ -1,6 +1,2 @@
-const sayHello = () => {
-    console.log("Helloooooooo");
-}
-
-
-setTimeout(sayHello, 4500);
+#!/usr/bin/env node
+import "./src/command.js"
